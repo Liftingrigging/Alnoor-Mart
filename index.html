@@ -3,769 +3,849 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#075b3b">
-
-<title>Alnoor Mart | Karyana Store</title>
+<title>Alnoor Mart | Online Grocery Store</title>
 
 <style>
-* {
-  box-sizing: border-box;
+:root {
+    --green: #14532d;
+    --dark-green: #0b3522;
+    --gold: #f5c542;
+    --cream: #fffdf5;
+    --white: #ffffff;
 }
 
-html {
-  scroll-behavior: smooth;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f5f7f2;
-  color: #26352b;
+    font-family: Arial, sans-serif;
+    background: #f5f7f3;
+    color: #222;
+    line-height: 1.5;
 }
 
-/* HEADER WITH SHOP PHOTO BACKGROUND */
+button, input {
+    font: inherit;
+}
 
-.store-header {
-  min-height: 350px;
-  padding: 35px 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
+button {
+    cursor: pointer;
+}
 
-  background:
-    linear-gradient(
-      rgba(0, 35, 22, 0.65),
-      rgba(0, 35, 22, 0.72)
-    ),
-    url("alnoor-mart.jpg") center center / cover no-repeat;
+img {
+    max-width: 100%;
+}
+
+header {
+    position: relative;
+    min-height: 320px;
+    background-color: var(--dark-green);
+
+    /* Shop photo */
+    background-image:
+        linear-gradient(
+            rgba(0, 25, 14, 0.45),
+            rgba(0, 25, 14, 0.65)
+        ),
+        url("alnoor-mart.jpg");
+
+    background-size: cover;
+    background-position: center 45%;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.topbar {
+    background: rgba(0, 30, 18, 0.55);
+    padding: 15px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: bold;
+    color: var(--gold);
+}
+
+.topbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 .header-content {
-  width: 100%;
-  max-width: 850px;
+    text-align: center;
+    padding: 38px 16px 45px;
 }
 
-.store-header h1 {
-  margin: 0 0 10px;
-  font-size: clamp(32px, 6vw, 52px);
-  text-shadow: 0 2px 5px #000;
+.header-content h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    margin-bottom: 8px;
+    text-shadow: 0 2px 6px #000;
 }
 
-.store-header p {
-  font-size: 17px;
-  line-height: 1.6;
-  text-shadow: 0 2px 4px #000;
+.header-content p {
+    font-size: 18px;
+    text-shadow: 0 2px 5px #000;
 }
 
-.search {
-  width: 100%;
-  max-width: 500px;
-  padding: 14px 16px;
-  border: none;
-  border-radius: 9px;
-  font-size: 16px;
-  outline-color: #f28c18;
+.search-area {
+    display: flex;
+    max-width: 550px;
+    margin: 22px auto 0;
 }
 
-/* NAVIGATION */
+.search-area input {
+    width: 100%;
+    min-width: 0;
+    padding: 13px;
+    border: 0;
+    border-radius: 7px 0 0 7px;
+    outline: none;
+}
+
+.search-area button {
+    padding: 12px 18px;
+    background: var(--gold);
+    color: #222;
+    border: none;
+    border-radius: 0 7px 7px 0;
+    font-weight: bold;
+}
+
+/* WELCOME SECTION WITH ITS OWN BACKGROUND PHOTO */
+.welcome {
+    min-height: 300px;
+    margin: 22px auto;
+    width: 92%;
+    max-width: 1300px;
+    border-radius: 14px;
+    overflow: hidden;
+
+    background-color: #315b39;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(0, 25, 14, 0.82),
+            rgba(0, 25, 14, 0.35)
+        ),
+        url("grocery-background.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    padding: 35px;
+    color: white;
+}
+
+.welcome-content {
+    max-width: 600px;
+}
+
+.welcome h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    margin-bottom: 12px;
+}
+
+.welcome p {
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+.primary-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #222;
+    border: none;
+    border-radius: 7px;
+    padding: 12px 22px;
+    text-decoration: none;
+    font-weight: bold;
+}
 
 nav {
-  background: #f28c18;
-  padding: 14px 8px;
-  text-align: center;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 18px 12px;
+    background: white;
+    box-shadow: 0 2px 6px #0000000d;
 }
 
-nav a {
-  display: inline-block;
-  margin: 5px 12px;
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
+nav button, .filter-btn {
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 22px;
+    padding: 10px 17px;
 }
 
-nav a:hover {
-  text-decoration: underline;
+nav button:hover, .filter-btn:hover {
+    background: #237b45;
 }
 
-/* WELCOME BANNER */
-
-.hero {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-            url("grocery-background.jpg") center / cover no-repeat;
-  text-align: center;
-  padding: 30px 15px;
+.section {
+    width: 92%;
+    max-width: 1300px;
+    margin: 28px auto;
 }
 
-.hero h2 {
-  color: #075b3b;
-  font-size: 29px;
+.section h2 {
+    color: var(--green);
+    font-size: 27px;
+    margin-bottom: 18px;
 }
-
-.hero p {
-  line-height: 1.7;
-}
-
-.btn {
-  display: inline-block;
-  padding: 11px 15px;
-  margin: 4px;
-  background: #087443;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  text-decoration: none;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.btn:hover {
-  background: #064e32;
-}
-
-.orange-btn {
-  background: #ed7d0c;
-}
-
-/* CATEGORIES */
-
-.section-title {
-  text-align: center;
-  color: #075b3b;
-  margin: 30px 10px 20px;
-}
-
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 9px;
-  padding: 10px 12px;
-}
-
-.category-btn {
-  padding: 10px 15px;
-  background: white;
-  color: #075b3b;
-  border: 1px solid #087443;
-  border-radius: 25px;
-  cursor: pointer;
-}
-
-.category-btn.active,
-.category-btn:hover {
-  background: #075b3b;
-  color: white;
-}
-
-/* PRODUCT CARDS */
 
 .products {
-  display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(165px, 1fr)
-  );
-  gap: 16px;
-  max-width: 1250px;
-  margin: auto;
-  padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .product {
-  background: white;
-  border-radius: 12px;
-  padding: 13px;
-  text-align: center;
-  box-shadow: 0 3px 12px #00000010;
-  border-bottom: 3px solid #f28c18;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #0000000c;
+    display: flex;
+    flex-direction: column;
 }
 
 .product img {
-  width: 100%;
-  height: 140px;
-  object-fit: contain;
+    width: 100%;
+    height: 175px;
+    object-fit: contain;
+    padding: 12px;
+    background: #fff;
+}
+
+.product-info {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .product h3 {
-  font-size: 17px;
-  min-height: 40px;
+    font-size: 17px;
+    margin-bottom: 5px;
 }
 
-.product .category-label {
-  color: #64748b;
-  font-size: 13px;
+.category-label {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 8px;
 }
 
 .price {
-  font-weight: bold;
-  font-size: 19px;
-  color: #087443;
+    color: var(--green);
+    font-weight: bold;
+    font-size: 20px;
+    margin: 5px 0 12px;
 }
 
-/* SHOPPING CART */
-
-.cart {
-  max-width: 850px;
-  margin: 25px auto;
-  padding: 22px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 3px 12px #00000010;
+.add-btn {
+    margin-top: auto;
+    width: 100%;
+    padding: 10px;
+    background: var(--green);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
 }
 
-.cart h2 {
-  color: #075b3b;
+.add-btn:hover {
+    background: #237b45;
+}
+
+.cart-box {
+    background: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0000000c;
 }
 
 .cart-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  padding: 13px 0;
-  border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
 }
 
 .quantity-controls {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .quantity-controls button {
-  padding: 7px 10px;
-  border: 0;
-  border-radius: 5px;
-  background: #e1f3e7;
-  color: #075b3b;
-  cursor: pointer;
+    border: none;
+    background: #e6f1e8;
+    color: var(--green);
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-weight: bold;
 }
 
-.total {
-  font-size: 22px;
-  font-weight: bold;
-  color: #075b3b;
-  margin: 20px 0;
+.cart-total {
+    font-size: 23px;
+    font-weight: bold;
+    color: var(--green);
+    text-align: right;
+    margin-top: 18px;
 }
 
-.whatsapp {
-  background: #168a48;
+.whatsapp-btn {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    padding: 13px;
+    border-radius: 7px;
+    color: white;
+    background: #168b49;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-.whatsapp:hover {
-  background: #116c39;
+.empty-cart {
+    color: #666;
+    padding: 12px 0;
 }
-
-.empty {
-  text-align: center;
-  color: #64748b;
-  padding: 15px 0;
-}
-
-/* FOOTER */
 
 footer {
-  background: #075b3b;
-  color: white;
-  padding: 25px 15px;
-  margin-top: 35px;
-  text-align: center;
-  line-height: 1.8;
+    background: var(--dark-green);
+    color: white;
+    text-align: center;
+    padding: 26px 15px;
+    margin-top: 35px;
 }
 
-footer h2 {
-  margin: 0;
+footer p {
+    margin: 5px 0;
 }
 
-@media (max-width: 480px) {
-  .store-header {
-    min-height: 280px;
-    padding: 25px 12px;
-  }
+.hidden {
+    display: none !important;
+}
 
-  .store-header p {
-    font-size: 15px;
-  }
+@media (max-width: 900px) {
+    .products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 
-  nav a {
-    margin: 5px 8px;
-  }
+    header {
+        min-height: 290px;
+        background-position: center center;
+    }
+}
 
-  .products {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-    padding: 10px;
-  }
+@media (max-width: 600px) {
+    .topbar {
+        justify-content: center;
+        text-align: center;
+    }
 
-  .product {
-    padding: 9px;
-  }
+    header {
+        min-height: 260px;
+        background-position: center center;
+    }
 
-  .product img {
-    height: 105px;
-  }
+    .header-content {
+        padding: 30px 14px;
+    }
 
-  .product h3 {
-    font-size: 15px;
-  }
+    .header-content p {
+        font-size: 15px;
+    }
 
-  .cart {
-    margin: 12px;
-    padding: 15px;
-  }
+    .welcome {
+        min-height: 310px;
+        padding: 24px 20px;
+        background-position: center center;
+    }
+
+    .welcome p {
+        font-size: 15px;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .product img {
+        height: 135px;
+    }
+
+    .product-info {
+        padding: 10px;
+    }
+
+    .product h3 {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 17px;
+    }
+
+    nav {
+        gap: 8px;
+    }
+
+    nav button {
+        padding: 9px 12px;
+        font-size: 13px;
+    }
+
+    .section {
+        width: 94%;
+    }
+
+    .cart-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER: SHOP PHOTO IS THE BACKGROUND -->
+<header id="home">
+    <div class="topbar">
+        <div class="logo">🛒 Alnoor Mart</div>
+        <a href="#cart">🛍️ My Cart (<span id="cart-count">0</span>)</a>
+    </div>
 
-<header class="store-header">
-  <div class="header-content">
-    <h1>🛒 Alnoor Mart</h1>
-    <p>
-      Karyana Store • Groceries • Household Essentials
-    </p>
+    <div class="header-content">
+        <h1>Alnoor Mart</h1>
+        <p>Your Trusted Grocery & General Store</p>
+        <p>Quality Products • Great Value • Everyday Essentials</p>
 
-    <input
-      id="search"
-      class="search"
-      type="search"
-      placeholder="Search rice, flour, oil, shampoo..."
-      aria-label="Search products"
-    >
-  </div>
+        <div class="search-area">
+            <input
+                type="search"
+                id="search-input"
+                placeholder="Search rice, flour, oil, soap..."
+                aria-label="Search products"
+            >
+            <button type="button" onclick="searchProducts()">Search</button>
+        </div>
+    </div>
 </header>
 
-<nav>
-  <a href="#home">Home</a>
-  <a href="#products">Products</a>
-  <a href="#cart">Cart (<span id="count">0</span>)</a>
+<!-- WELCOME BACKGROUND PHOTO -->
+<section class="welcome">
+    <div class="welcome-content">
+        <h2>Welcome to Alnoor Mart!</h2>
+        <p>
+            Shop your everyday groceries and household essentials in one place.
+            Find rice, flour, cooking oil, pulses, tea, soap, detergent and more.
+        </p>
+        <a class="primary-btn" href="#products">Shop Now</a>
+    </div>
+</section>
+
+<nav aria-label="Product categories">
+    <button onclick="filterProducts('All')">All Products</button>
+    <button onclick="filterProducts('Grocery')">Grocery</button>
+    <button onclick="filterProducts('Personal Care')">Shampoo & Soap</button>
+    <button onclick="filterProducts('Household')">Household</button>
+    <button onclick="filterProducts('Cycles')">Cycles</button>
 </nav>
 
 <main>
+    <section class="section" id="products">
+        <h2>Our Products</h2>
+        <div class="products" id="product-list"></div>
+    </section>
 
-<section class="hero" id="home">
-  <h2>Welcome to Alnoor Mart!</h2>
+    <section class="section" id="cart">
+        <h2>🛒 Your Shopping Cart</h2>
 
-  <p>
-    Your daily shopping needs, all in one place.
-  </p>
+        <div class="cart-box">
+            <div id="cart-items">
+                <p class="empty-cart">Your cart is empty. Add some products!</p>
+            </div>
 
-  <p>
-    Rice • Flour • Cooking Oil • Shampoo • Soap • Cycles
-  </p>
+            <div class="cart-total">
+                Total: <span id="cart-total">Rs. 0</span>
+            </div>
 
-  <a class="btn orange-btn" href="#products">
-    Shop Now
-  </a>
-</section>
+            <a
+                class="whatsapp-btn"
+                id="whatsapp-order"
+                href="#"
+                onclick="return sendWhatsAppOrder(event)"
+            >
+                Order on WhatsApp
+            </a>
 
-<h2 class="section-title">Shop by Category</h2>
-
-<div class="categories">
-  <button class="category-btn active"
-    data-category="All">All Products</button>
-
-  <button class="category-btn"
-    data-category="Grocery">Grocery</button>
-
-  <button class="category-btn"
-    data-category="Personal Care">Shampoo & Soap</button>
-
-  <button class="category-btn"
-    data-category="Household">Household</button>
-
-  <button class="category-btn"
-    data-category="Cycles">Cycles</button>
-</div>
-
-<h2 class="section-title" id="products">
-  Our Karyana Products
-</h2>
-
-<div class="products" id="product-list"></div>
-
-<section class="cart" id="cart">
-  <h2>🛒 Your Shopping Cart</h2>
-
-  <div id="cart-items">
-    <p class="empty">Your cart is empty.</p>
-  </div>
-
-  <p class="total">
-    Total: <span id="total">SAR 0.00</span>
-  </p>
-
-  <button class="btn" id="clear-cart">
-    Clear Cart
-  </button>
-
-  <button class="btn whatsapp" id="order">
-    Order on WhatsApp
-  </button>
-
-  <p id="order-message">
-    Add products to your cart to prepare your order.
-  </p>
-</section>
-
+            <p style="font-size:13px;color:#666;margin-top:10px">
+                Orders are sent to WhatsApp. Online payment is not processed
+                by this demo website.
+            </p>
+        </div>
+    </section>
 </main>
 
 <footer>
-  <h2>Alnoor Mart</h2>
-  <p>Your trusted Karyana and General Store</p>
-  <p>Quality Products • Everyday Essentials</p>
-  <p>© 2026 Alnoor Mart. All rights reserved.</p>
+    <h2>Alnoor Mart</h2>
+    <p>Your Everyday Grocery & General Store</p>
+    <p>Prices displayed in Pakistani Rupees (PKR)</p>
+    <p>© <span id="year"></span> Alnoor Mart. All rights reserved.</p>
 </footer>
 
 <script>
+/*
+  IMPORTANT:
+  1. Change sample prices to your real prices in Pakistani rupees.
+  2. Replace WHATSAPP_NUMBER with your own WhatsApp number.
+  3. Use the international country code without +, spaces or dashes.
+     Example format for Pakistan: 923001234567
+*/
 
-// Replace this with your real WhatsApp number.
-// Use country code and number only, without + or spaces.
-// Example format: 9665XXXXXXXX
-
-const whatsappNumber = "9665XXXXXXXX";
+const WHATSAPP_NUMBER = "923001234567";
 
 const products = [
-  {
-    id: 1,
-    name: "Basmati Rice - 5 kg",
-    category: "Grocery",
-    price: 35,
-    image: "https://placehold.co/300x200/fef3c7/78350f?text=Basmati+Rice"
-  },
-  {
-    id: 2,
-    name: "Wheat Flour (Atta) - 5 kg",
-    category: "Grocery",
-    price: 18,
-    image: "https://placehold.co/300x200/f5e6ca/78350f?text=Wheat+Flour"
-  },
-  {
-    id: 3,
-    name: "Cooking Oil - 1.5 L",
-    category: "Grocery",
-    price: 14,
-    image: "https://placehold.co/300x200/fef3c7/92400e?text=Cooking+Oil"
-  },
-  {
-    id: 4,
-    name: "Sugar - 2 kg",
-    category: "Grocery",
-    price: 8,
-    image: "https://placehold.co/300x200/fafafa/444444?text=Sugar"
-  },
-  {
-    id: 5,
-    name: "Tea - 400 g",
-    category: "Grocery",
-    price: 16,
-    image: "https://placehold.co/300x200/dcfce7/14532d?text=Tea"
-  },
-  {
-    id: 6,
-    name: "Red Lentils - 1 kg",
-    category: "Grocery",
-    price: 9,
-    image: "https://placehold.co/300x200/fce7f3/831843?text=Red+Lentils"
-  },
-  {
-    id: 7,
-    name: "Mixed Spices",
-    category: "Grocery",
-    price: 5,
-    image: "https://placehold.co/300x200/ffedd5/9a3412?text=Spices"
-  },
-  {
-    id: 8,
-    name: "Shampoo - 400 ml",
-    category: "Personal Care",
-    price: 17,
-    image: "https://placehold.co/300x200/dbeafe/1e40af?text=Shampoo"
-  },
-  {
-    id: 9,
-    name: "Bathing Soap",
-    category: "Personal Care",
-    price: 4,
-    image: "https://placehold.co/300x200/f3e8ff/581c87?text=Soap"
-  },
-  {
-    id: 10,
-    name: "Toothpaste",
-    category: "Personal Care",
-    price: 7,
-    image: "https://placehold.co/300x200/e0f2fe/075985?text=Toothpaste"
-  },
-  {
-    id: 11,
-    name: "Laundry Detergent",
-    category: "Household",
-    price: 15,
-    image: "https://placehold.co/300x200/dcfce7/166534?text=Detergent"
-  },
-  {
-    id: 12,
-    name: "Dishwashing Liquid",
-    category: "Household",
-    price: 8,
-    image: "https://placehold.co/300x200/cffafe/155e75?text=Dishwashing+Liquid"
-  },
-  {
-    id: 13,
-    name: "City Bicycle",
-    category: "Cycles",
-    price: 350,
-    image: "https://placehold.co/300x200/e0e7ff/312e81?text=City+Bicycle"
-  },
-  {
-    id: 14,
-    name: "Kids Bicycle",
-    category: "Cycles",
-    price: 220,
-    image: "https://placehold.co/300x200/fce7f3/9d174d?text=Kids+Bicycle"
-  }
+    {
+        id: 1,
+        name: "Basmati Rice 5 kg",
+        category: "Grocery",
+        price: 1800,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Basmati+Rice"
+    },
+    {
+        id: 2,
+        name: "Wheat Flour / Atta 5 kg",
+        category: "Grocery",
+        price: 750,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Wheat+Flour"
+    },
+    {
+        id: 3,
+        name: "Cooking Oil 1 L",
+        category: "Grocery",
+        price: 600,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Cooking+Oil"
+    },
+    {
+        id: 4,
+        name: "Sugar 1 kg",
+        category: "Grocery",
+        price: 180,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Sugar"
+    },
+    {
+        id: 5,
+        name: "Tea 450 g",
+        category: "Grocery",
+        price: 1200,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Tea"
+    },
+    {
+        id: 6,
+        name: "Red Lentils 1 kg",
+        category: "Grocery",
+        price: 300,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Red+Lentils"
+    },
+    {
+        id: 7,
+        name: "Mixed Spices",
+        category: "Grocery",
+        price: 150,
+        image: "https://placehold.co/400x300/f5f0df/333333?text=Spices"
+    },
+    {
+        id: 8,
+        name: "Shampoo 400 ml",
+        category: "Personal Care",
+        price: 550,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=Shampoo"
+    },
+    {
+        id: 9,
+        name: "Bath Soap",
+        category: "Personal Care",
+        price: 120,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=Bath+Soap"
+    },
+    {
+        id: 10,
+        name: "Toothpaste",
+        category: "Personal Care",
+        price: 200,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=Toothpaste"
+    },
+    {
+        id: 11,
+        name: "Laundry Detergent",
+        category: "Household",
+        price: 450,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=Detergent"
+    },
+    {
+        id: 12,
+        name: "Dishwashing Liquid",
+        category: "Household",
+        price: 250,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=Dishwashing+Liquid"
+    },
+    {
+        id: 13,
+        name: "City Bicycle",
+        category: "Cycles",
+        price: 25000,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=City+Bicycle"
+    },
+    {
+        id: 14,
+        name: "Kids Bicycle",
+        category: "Cycles",
+        price: 15000,
+        image: "https://placehold.co/400x300/e6f1e8/333333?text=Kids+Bicycle"
+    }
 ];
 
-const cart = {};
-let selectedCategory = "All";
+let cart = {};
+let currentCategory = "All";
+let currentSearch = "";
 
-const productList = document.getElementById("product-list");
+function formatPKR(amount) {
+    return "Rs. " + amount.toLocaleString("en-PK");
+}
 
 function renderProducts() {
-  const query = document
-    .getElementById("search")
-    .value.trim().toLowerCase();
+    const list = document.getElementById("product-list");
+    list.innerHTML = "";
 
-  const filtered = products.filter(product => {
-    const matchesCategory =
-      selectedCategory === "All" ||
-      product.category === selectedCategory;
+    const filtered = products.filter(product => {
+        const matchesCategory =
+            currentCategory === "All" ||
+            product.category === currentCategory;
 
-    const matchesSearch =
-      (product.name + " " + product.category)
-        .toLowerCase()
-        .includes(query);
+        const searchText =
+            (product.name + " " + product.category).toLowerCase();
 
-    return matchesCategory && matchesSearch;
-  });
+        const matchesSearch =
+            searchText.includes(currentSearch.toLowerCase());
 
-  productList.replaceChildren();
-
-  if (filtered.length === 0) {
-    const empty = document.createElement("p");
-    empty.className = "empty";
-    empty.textContent = "No products found.";
-    productList.appendChild(empty);
-    return;
-  }
-
-  filtered.forEach(product => {
-    const card = document.createElement("article");
-    card.className = "product";
-
-    const img = document.createElement("img");
-    img.src = product.image;
-    img.alt = product.name;
-    img.loading = "lazy";
-
-    const name = document.createElement("h3");
-    name.textContent = product.name;
-
-    const category = document.createElement("p");
-    category.className = "category-label";
-    category.textContent = product.category;
-
-    const price = document.createElement("p");
-    price.className = "price";
-    price.textContent =
-      "SAR " + product.price.toFixed(2);
-
-    const button = document.createElement("button");
-    button.className = "btn";
-    button.textContent = "Add to Cart";
-
-    button.addEventListener("click", () => {
-      cart[product.id] = (cart[product.id] || 0) + 1;
-      renderCart();
+        return matchesCategory && matchesSearch;
     });
 
-    card.append(img, name, category, price, button);
-    productList.appendChild(card);
-  });
+    if (filtered.length === 0) {
+        list.innerHTML = "<p>No products found. Try another search.</p>";
+        return;
+    }
+
+    filtered.forEach(product => {
+        const card = document.createElement("article");
+        card.className = "product";
+
+        const image = document.createElement("img");
+        image.src = product.image;
+        image.alt = product.name;
+        image.loading = "lazy";
+
+        image.onerror = function () {
+            this.onerror = null;
+            this.src =
+                "https://placehold.co/400x300/f5f0df/333333?text=Product";
+        };
+
+        const info = document.createElement("div");
+        info.className = "product-info";
+
+        const name = document.createElement("h3");
+        name.textContent = product.name;
+
+        const category = document.createElement("p");
+        category.className = "category-label";
+        category.textContent = product.category;
+
+        const price = document.createElement("p");
+        price.className = "price";
+        price.textContent = formatPKR(product.price);
+
+        const button = document.createElement("button");
+        button.className = "add-btn";
+        button.textContent = "Add to Cart";
+        button.addEventListener("click", () => addToCart(product.id));
+
+        info.append(name, category, price, button);
+        card.append(image, info);
+        list.appendChild(card);
+    });
+}
+
+function filterProducts(category) {
+    currentCategory = category;
+    renderProducts();
+
+    document.getElementById("products").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function searchProducts() {
+    currentSearch =
+        document.getElementById("search-input").value.trim();
+
+    currentCategory = "All";
+    renderProducts();
+
+    document.getElementById("products").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+document.getElementById("search-input").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+        searchProducts();
+    }
+});
+
+function addToCart(id) {
+    cart[id] = (cart[id] || 0) + 1;
+    renderCart();
+}
+
+function changeQuantity(id, change) {
+    cart[id] = (cart[id] || 0) + change;
+
+    if (cart[id] <= 0) {
+        delete cart[id];
+    }
+
+    renderCart();
 }
 
 function renderCart() {
-  const container = document.getElementById("cart-items");
-  container.replaceChildren();
+    const container = document.getElementById("cart-items");
+    container.innerHTML = "";
 
-  let total = 0;
-  let count = 0;
+    const entries = Object.entries(cart);
+    let total = 0;
+    let count = 0;
 
-  Object.entries(cart).forEach(([id, quantity]) => {
-    const product = products.find(
-      item => item.id === Number(id)
-    );
+    if (entries.length === 0) {
+        container.innerHTML =
+            '<p class="empty-cart">Your cart is empty. Add some products!</p>';
+    }
 
-    if (!product) return;
+    entries.forEach(([id, quantity]) => {
+        const product = products.find(item => item.id === Number(id));
 
-    total += product.price * quantity;
-    count += quantity;
+        if (!product) return;
 
-    const row = document.createElement("div");
-    row.className = "cart-item";
+        total += product.price * quantity;
+        count += quantity;
 
-    const label = document.createElement("span");
-    label.textContent =
-      product.name + " × " + quantity +
-      " — SAR " +
-      (product.price * quantity).toFixed(2);
+        const row = document.createElement("div");
+        row.className = "cart-item";
 
-    const controls = document.createElement("div");
-    controls.className = "quantity-controls";
+        const details = document.createElement("div");
+        const name = document.createElement("strong");
+        name.textContent = product.name;
 
-    const minus = document.createElement("button");
-    minus.textContent = "−";
-    minus.setAttribute("aria-label", "Remove one item");
+        const subtotal = document.createElement("div");
+        subtotal.textContent = formatPKR(product.price * quantity);
 
-    minus.onclick = () => {
-      cart[product.id]--;
+        details.append(name, subtotal);
 
-      if (cart[product.id] <= 0) {
-        delete cart[product.id];
-      }
+        const controls = document.createElement("div");
+        controls.className = "quantity-controls";
 
-      renderCart();
-    };
+        const minus = document.createElement("button");
+        minus.textContent = "−";
+        minus.setAttribute("aria-label", "Decrease quantity");
+        minus.addEventListener("click", () => changeQuantity(product.id, -1));
 
-    const plus = document.createElement("button");
-    plus.textContent = "+";
-    plus.setAttribute("aria-label", "Add one item");
+        const quantityText = document.createElement("span");
+        quantityText.textContent = quantity;
 
-    plus.onclick = () => {
-      cart[product.id]++;
-      renderCart();
-    };
+        const plus = document.createElement("button");
+        plus.textContent = "+";
+        plus.setAttribute("aria-label", "Increase quantity");
+        plus.addEventListener("click", () => changeQuantity(product.id, 1));
 
-    const remove = document.createElement("button");
-    remove.textContent = "Remove";
+        controls.append(minus, quantityText, plus);
+        row.append(details, controls);
+        container.appendChild(row);
+    });
 
-    remove.onclick = () => {
-      delete cart[product.id];
-      renderCart();
-    };
-
-    controls.append(minus, plus, remove);
-    row.append(label, controls);
-    container.appendChild(row);
-  });
-
-  if (count === 0) {
-    const empty = document.createElement("p");
-    empty.className = "empty";
-    empty.textContent = "Your cart is empty.";
-    container.appendChild(empty);
-  }
-
-  document.getElementById("count").textContent = count;
-
-  document.getElementById("total").textContent =
-    "SAR " + total.toFixed(2);
-
-  document.getElementById("order-message").textContent =
-    count > 0
-      ? "Check your items before ordering."
-      : "Add products to your cart to prepare your order.";
+    document.getElementById("cart-count").textContent = count;
+    document.getElementById("cart-total").textContent = formatPKR(total);
 }
 
-// SEARCH
+function sendWhatsAppOrder(event) {
+    event.preventDefault();
 
-document.getElementById("search").addEventListener(
-  "input",
-  renderProducts
-);
-
-// CATEGORY FILTERS
-
-document.querySelectorAll(".category-btn").forEach(button => {
-  button.addEventListener("click", () => {
-    selectedCategory = button.dataset.category;
-
-    document.querySelectorAll(".category-btn").forEach(item => {
-      item.classList.toggle("active", item === button);
-    });
-
-    renderProducts();
-  });
-});
-
-// CLEAR CART
-
-document.getElementById("clear-cart").addEventListener(
-  "click",
-  () => {
-    Object.keys(cart).forEach(id => delete cart[id]);
-    renderCart();
-  }
-);
-
-// WHATSAPP ORDER
-
-document.getElementById("order").addEventListener(
-  "click",
-  () => {
-    const items = Object.entries(cart);
-
-    if (items.length === 0) {
-      alert("Please add products to your cart first.");
-      return;
+    if (Object.keys(cart).length === 0) {
+        alert("Your cart is empty. Please add products first.");
+        return false;
     }
 
-    if (!/^\d{8,15}$/.test(whatsappNumber)) {
-      alert(
-        "Please replace the example WhatsApp number in the code first."
-      );
-      return;
+    if (!/^\d{10,15}$/.test(WHATSAPP_NUMBER) ||
+        WHATSAPP_NUMBER === "923001234567") {
+        alert(
+            "Please replace the sample WhatsApp number in index.html " +
+            "with your own WhatsApp number, including country code."
+        );
+        return false;
     }
 
+    let message = "Assalam-o-Alaikum, I want to order from Alnoor Mart:\n\n";
     let total = 0;
 
-    const lines = items.map(([id, quantity]) => {
-      const product = products.find(
-        item => item.id === Number(id)
-      );
+    Object.entries(cart).forEach(([id, quantity]) => {
+        const product = products.find(item => item.id === Number(id));
+        if (!product) return;
 
-      total += product.price * quantity;
+        const subtotal = product.price * quantity;
+        total += subtotal;
 
-      return product.name + " x " + quantity +
-        " = SAR " +
-        (product.price * quantity).toFixed(2);
+        message +=
+            product.name + " x " + quantity +
+            " = " + formatPKR(subtotal) + "\n";
     });
 
-    const message =
-      "Hello Alnoor Mart! I would like to order:\n\n" +
-      lines.join("\n") +
-      "\n\nTotal: SAR " + total.toFixed(2) +
-      "\nPlease confirm availability and delivery details.";
+    message += "\nTotal: " + formatPKR(total);
+    message += "\n\nPlease confirm availability and delivery details.";
 
     const url =
-      "https://wa.me/" + whatsappNumber +
-      "?text=" + encodeURIComponent(message);
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
 
     window.open(url, "_blank", "noopener,noreferrer");
-  }
-);
+    return false;
+}
 
-// INITIAL DISPLAY
+document.getElementById("year").textContent =
+    new Date().getFullYear();
 
 renderProducts();
 renderCart();
-
 </script>
 
 </body>
