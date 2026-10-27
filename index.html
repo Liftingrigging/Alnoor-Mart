@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alnoor Mart | Online Grocery Store</title>
+
+<title>Alnoor Mart | Grocery & General Store</title>
 
 <style>
 :root {
     --green: #14532d;
     --dark-green: #0b3522;
     --gold: #f5c542;
-    --cream: #fffdf5;
     --white: #ffffff;
 }
 
@@ -18,6 +18,10 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -35,35 +39,38 @@ button {
     cursor: pointer;
 }
 
-img {
-    max-width: 100%;
+a {
+    -webkit-tap-highlight-color: transparent;
 }
+
+/* =========================
+   SHOP HEADER
+========================= */
 
 header {
     position: relative;
     min-height: 320px;
-    background-color: var(--dark-green);
-
-    /* Shop photo */
-    background-image:
-        linear-gradient(
-            rgba(0, 25, 14, 0.45),
-            rgba(0, 25, 14, 0.65)
-        ),
-        url("alnoor-mart.jpg");
-
-    background-size: cover;
-    background-position: center 45%;
-    background-repeat: no-repeat;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     color: white;
+    background-color: var(--dark-green);
+
+    /* GitHub Pages shop photo */
+    background-image:
+        linear-gradient(
+            rgba(0, 25, 14, 0.42),
+            rgba(0, 25, 14, 0.68)
+        ),
+        url("/Alnoor-Mart/alnoor-mart.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 
 .topbar {
-    background: rgba(0, 30, 18, 0.55);
+    background: rgba(0, 30, 18, 0.65);
     padding: 15px 5%;
     display: flex;
     align-items: center;
@@ -86,7 +93,7 @@ header {
 
 .header-content {
     text-align: center;
-    padding: 38px 16px 45px;
+    padding: 35px 16px 42px;
 }
 
 .header-content h1 {
@@ -96,14 +103,14 @@ header {
 }
 
 .header-content p {
-    font-size: 18px;
+    font-size: 17px;
     text-shadow: 0 2px 5px #000;
 }
 
 .search-area {
     display: flex;
     max-width: 550px;
-    margin: 22px auto 0;
+    margin: 20px auto 0;
 }
 
 .search-area input {
@@ -124,8 +131,16 @@ header {
     font-weight: bold;
 }
 
-/* WELCOME SECTION WITH ITS OWN BACKGROUND PHOTO */
+/* =========================
+   WELCOME SECTION
+   Uses an actual IMG element
+   so the photo is easier to
+   diagnose if it fails to load.
+========================= */
+
 .welcome {
+    position: relative;
+    isolation: isolate;
     width: 92%;
     max-width: 1300px;
     min-height: 350px;
@@ -134,24 +149,39 @@ header {
     border-radius: 14px;
     overflow: hidden;
 
-    background-color: #315b39;
-    background-image:
-        linear-gradient(
-            rgba(0, 0, 0, 0.35),
-            rgba(0, 0, 0, 0.35)
-        ),
-        url("./grocery-background.jpg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
     display: flex;
     align-items: center;
+    background: #315b39;
     color: white;
 }
+
+/* The grocery photo fills the Welcome section */
+.welcome-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Dark overlay keeps text readable */
+.welcome::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 20, 10, 0.83),
+        rgba(0, 20, 10, 0.25)
+    );
+}
+
 .welcome-content {
-    max-width: 600px;
+    max-width: 620px;
 }
 
 .welcome h2 {
@@ -168,12 +198,15 @@ header {
     display: inline-block;
     background: var(--gold);
     color: #222;
-    border: none;
     border-radius: 7px;
     padding: 12px 22px;
     text-decoration: none;
     font-weight: bold;
 }
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
 
 nav {
     display: flex;
@@ -194,35 +227,47 @@ nav button {
     color: white;
     font-weight: bold;
     text-shadow: 1px 2px 4px black;
+
     background-color: #14532d;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
     box-shadow: inset 0 0 0 200px rgba(0, 0, 0, 0.38);
 }
 
-nav button:nth-child(1) {
-    background-image: url("grocery-background.jpg");
-}
-
+nav button:nth-child(1),
 nav button:nth-child(2) {
-    background-image: url("grocery-background.jpg");
+    background-image:
+        linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,.15)),
+        url("/Alnoor-Mart/grocery-background.jpg");
 }
 
 nav button:nth-child(3) {
-    background-image: url("personal-care.jpg");
+    background-image:
+        linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)),
+        url("/Alnoor-Mart/personal-care.jpg");
 }
 
 nav button:nth-child(4) {
-    background-image: url("household-items.jpg");
+    background-image:
+        linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)),
+        url("/Alnoor-Mart/household-items.jpg");
 }
 
 nav button:nth-child(5) {
-    background-image: url("bicycles.jpg");
+    background-image:
+        linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)),
+        url("/Alnoor-Mart/bicycles.jpg");
 }
-nav button:hover, .filter-btn:hover {
-    background: #237b45;
+
+nav button:hover {
+    filter: brightness(1.12);
 }
+
+/* =========================
+   PRODUCTS
+========================= */
 
 .section {
     width: 92%;
@@ -256,7 +301,7 @@ nav button:hover, .filter-btn:hover {
     height: 175px;
     object-fit: contain;
     padding: 12px;
-    background: #fff;
+    background: white;
 }
 
 .product-info {
@@ -298,6 +343,10 @@ nav button:hover, .filter-btn:hover {
 .add-btn:hover {
     background: #237b45;
 }
+
+/* =========================
+   SHOPPING CART
+========================= */
 
 .cart-box {
     background: white;
@@ -367,9 +416,9 @@ footer p {
     margin: 5px 0;
 }
 
-.hidden {
-    display: none !important;
-}
+/* =========================
+   RESPONSIVE LAYOUT
+========================= */
 
 @media (max-width: 900px) {
     .products {
@@ -378,7 +427,6 @@ footer p {
 
     header {
         min-height: 290px;
-        background-position: center center;
     }
 }
 
@@ -390,11 +438,10 @@ footer p {
 
     header {
         min-height: 260px;
-        background-position: center center;
     }
 
     .header-content {
-        padding: 30px 14px;
+        padding: 28px 14px;
     }
 
     .header-content p {
@@ -404,7 +451,6 @@ footer p {
     .welcome {
         min-height: 310px;
         padding: 24px 20px;
-        background-position: center center;
     }
 
     .welcome p {
@@ -437,7 +483,9 @@ footer p {
     }
 
     nav button {
-        padding: 9px 12px;
+        min-width: 105px;
+        min-height: 75px;
+        padding: 10px;
         font-size: 13px;
     }
 
@@ -458,12 +506,14 @@ footer p {
 <header id="home">
     <div class="topbar">
         <div class="logo">🛒 Alnoor Mart</div>
-        <a href="#cart">🛍️ My Cart (<span id="cart-count">0</span>)</a>
+        <a href="#cart">
+            🛍️ My Cart (<span id="cart-count">0</span>)
+        </a>
     </div>
 
     <div class="header-content">
         <h1>Alnoor Mart</h1>
-        <p>Your Trusted Grocery & General Store</p>
+        <p>Your Trusted Grocery &amp; General Store</p>
         <p>Quality Products • Great Value • Everyday Essentials</p>
 
         <div class="search-area">
@@ -473,27 +523,41 @@ footer p {
                 placeholder="Search rice, flour, oil, soap..."
                 aria-label="Search products"
             >
-            <button type="button" onclick="searchProducts()">Search</button>
+            <button type="button" onclick="searchProducts()">
+                Search
+            </button>
         </div>
     </div>
 </header>
 
-<!-- WELCOME BACKGROUND PHOTO -->
+<!-- WELCOME SECTION WITH GROCERY PHOTO -->
 <section class="welcome">
+
+    <img
+        class="welcome-bg"
+        src="/Alnoor-Mart/grocery-background.jpg"
+        alt=""
+        aria-hidden="true"
+        onerror="this.style.display='none';"
+    >
+
     <div class="welcome-content">
         <h2>Welcome to Alnoor Mart!</h2>
+
         <p>
             Shop your everyday groceries and household essentials in one place.
             Find rice, flour, cooking oil, pulses, tea, soap, detergent and more.
         </p>
+
         <a class="primary-btn" href="#products">Shop Now</a>
     </div>
 </section>
 
+<!-- PRODUCT CATEGORIES -->
 <nav aria-label="Product categories">
     <button onclick="filterProducts('All')">All Products</button>
     <button onclick="filterProducts('Grocery')">Grocery</button>
-    <button onclick="filterProducts('Personal Care')">Shampoo & Soap</button>
+    <button onclick="filterProducts('Personal Care')">Shampoo &amp; Soap</button>
     <button onclick="filterProducts('Household')">Household</button>
     <button onclick="filterProducts('Cycles')">Cycles</button>
 </nav>
@@ -509,7 +573,9 @@ footer p {
 
         <div class="cart-box">
             <div id="cart-items">
-                <p class="empty-cart">Your cart is empty. Add some products!</p>
+                <p class="empty-cart">
+                    Your cart is empty. Add some products!
+                </p>
             </div>
 
             <div class="cart-total">
@@ -526,8 +592,8 @@ footer p {
             </a>
 
             <p style="font-size:13px;color:#666;margin-top:10px">
-                Orders are sent to WhatsApp. Online payment is not processed
-                by this demo website.
+                Orders are sent to WhatsApp. This website does not
+                process online payments.
             </p>
         </div>
     </section>
@@ -535,18 +601,17 @@ footer p {
 
 <footer>
     <h2>Alnoor Mart</h2>
-    <p>Your Everyday Grocery & General Store</p>
+    <p>Your Everyday Grocery &amp; General Store</p>
     <p>Prices displayed in Pakistani Rupees (PKR)</p>
     <p>© <span id="year"></span> Alnoor Mart. All rights reserved.</p>
 </footer>
 
 <script>
 /*
-  IMPORTANT:
-  1. Change sample prices to your real prices in Pakistani rupees.
-  2. Replace WHATSAPP_NUMBER with your own WhatsApp number.
-  3. Use the international country code without +, spaces or dashes.
-     Example format for Pakistan: 923001234567
+  BEFORE LAUNCHING:
+  1. Replace sample prices with your actual prices in PKR.
+  2. Replace the sample WhatsApp number with your own number.
+  3. Include country code without +, spaces or dashes.
 */
 
 const WHATSAPP_NUMBER = "923001234567";
@@ -679,7 +744,8 @@ function renderProducts() {
     });
 
     if (filtered.length === 0) {
-        list.innerHTML = "<p>No products found. Try another search.</p>";
+        list.innerHTML =
+            "<p>No products found. Try another search.</p>";
         return;
     }
 
@@ -715,7 +781,10 @@ function renderProducts() {
         const button = document.createElement("button");
         button.className = "add-btn";
         button.textContent = "Add to Cart";
-        button.addEventListener("click", () => addToCart(product.id));
+        button.addEventListener(
+            "click",
+            () => addToCart(product.id)
+        );
 
         info.append(name, category, price, button);
         card.append(image, info);
@@ -744,11 +813,14 @@ function searchProducts() {
     });
 }
 
-document.getElementById("search-input").addEventListener("keydown", event => {
-    if (event.key === "Enter") {
-        searchProducts();
+document.getElementById("search-input").addEventListener(
+    "keydown",
+    event => {
+        if (event.key === "Enter") {
+            searchProducts();
+        }
     }
-});
+);
 
 function addToCart(id) {
     cart[id] = (cart[id] || 0) + 1;
@@ -779,7 +851,9 @@ function renderCart() {
     }
 
     entries.forEach(([id, quantity]) => {
-        const product = products.find(item => item.id === Number(id));
+        const product = products.find(
+            item => item.id === Number(id)
+        );
 
         if (!product) return;
 
@@ -790,11 +864,13 @@ function renderCart() {
         row.className = "cart-item";
 
         const details = document.createElement("div");
+
         const name = document.createElement("strong");
         name.textContent = product.name;
 
         const subtotal = document.createElement("div");
-        subtotal.textContent = formatPKR(product.price * quantity);
+        subtotal.textContent =
+            formatPKR(product.price * quantity);
 
         details.append(name, subtotal);
 
@@ -804,7 +880,10 @@ function renderCart() {
         const minus = document.createElement("button");
         minus.textContent = "−";
         minus.setAttribute("aria-label", "Decrease quantity");
-        minus.addEventListener("click", () => changeQuantity(product.id, -1));
+        minus.addEventListener(
+            "click",
+            () => changeQuantity(product.id, -1)
+        );
 
         const quantityText = document.createElement("span");
         quantityText.textContent = quantity;
@@ -812,7 +891,10 @@ function renderCart() {
         const plus = document.createElement("button");
         plus.textContent = "+";
         plus.setAttribute("aria-label", "Increase quantity");
-        plus.addEventListener("click", () => changeQuantity(product.id, 1));
+        plus.addEventListener(
+            "click",
+            () => changeQuantity(product.id, 1)
+        );
 
         controls.append(minus, quantityText, plus);
         row.append(details, controls);
@@ -820,7 +902,8 @@ function renderCart() {
     });
 
     document.getElementById("cart-count").textContent = count;
-    document.getElementById("cart-total").textContent = formatPKR(total);
+    document.getElementById("cart-total").textContent =
+        formatPKR(total);
 }
 
 function sendWhatsAppOrder(event) {
@@ -831,20 +914,27 @@ function sendWhatsAppOrder(event) {
         return false;
     }
 
-    if (!/^\d{10,15}$/.test(WHATSAPP_NUMBER) ||
-        WHATSAPP_NUMBER === "923001234567") {
+    if (
+        !/^\d{10,15}$/.test(WHATSAPP_NUMBER) ||
+        WHATSAPP_NUMBER === "923001234567"
+    ) {
         alert(
             "Please replace the sample WhatsApp number in index.html " +
-            "with your own WhatsApp number, including country code."
+            "with your own number, including the country code."
         );
         return false;
     }
 
-    let message = "Assalam-o-Alaikum, I want to order from Alnoor Mart:\n\n";
+    let message =
+        "Assalam-o-Alaikum, I want to order from Alnoor Mart:\n\n";
+
     let total = 0;
 
     Object.entries(cart).forEach(([id, quantity]) => {
-        const product = products.find(item => item.id === Number(id));
+        const product = products.find(
+            item => item.id === Number(id)
+        );
+
         if (!product) return;
 
         const subtotal = product.price * quantity;
@@ -856,7 +946,8 @@ function sendWhatsAppOrder(event) {
     });
 
     message += "\nTotal: " + formatPKR(total);
-    message += "\n\nPlease confirm availability and delivery details.";
+    message +=
+        "\n\nPlease confirm availability and delivery details.";
 
     const url =
         "https://wa.me/" + WHATSAPP_NUMBER +
