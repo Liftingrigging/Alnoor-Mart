@@ -3,665 +3,711 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alnoor Mart | Grocery & General Store</title>
+  <title>Alnoor Mart</title>
 
   <style>
     :root {
-      --green: #174d35;
-      --gold: #f2bd4b;
-      --cream: #f7f8f5;
+      --green: #245c38;
+      --dark-green: #163d26;
+      --gold: #f5c451;
+      --light: #f6f8f4;
+      --white: #ffffff;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: var(--cream);
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--light);
       color: #222;
     }
 
-    button, input { font: inherit; }
-    button { cursor: pointer; }
-
-    .topbar {
-      background: #0c3024;
-      color: white;
-      text-align: center;
-      padding: 9px;
-    }
-
     header {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      min-height: 180px;
-      display: grid;
-      place-items: center;
-      text-align: center;
+      background: var(--dark-green);
       color: white;
-      padding: 25px;
-      background: var(--green);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
-    .header-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
       object-fit: cover;
-      z-index: -2;
     }
 
-    header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 25, 15, .65);
-      z-index: -1;
+    .brand h1 {
+      margin: 0;
+      font-size: 25px;
     }
 
-    header h1 {
-      margin: 0 0 10px;
-      font-size: clamp(32px, 5vw, 46px);
+    .brand p {
+      margin: 5px 0 0;
+      color: #e4eadd;
+      font-size: 13px;
     }
-
-    header p { margin: 6px 0; }
 
     nav {
-      background: var(--green);
       display: flex;
-      justify-content: center;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 8px;
-      padding: 12px;
+      align-items: center;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      padding: 10px 14px;
-      border-radius: 7px;
       font-weight: bold;
+      font-size: 14px;
     }
 
-    nav a:hover { background: #326b4d; }
-
-    .hero {
-      width: 94%;
-      max-width: 1200px;
-      margin: 22px auto;
-      padding: 25px;
-      border-radius: 14px;
-      background: white;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: center;
+    nav a:hover {
+      color: var(--gold);
     }
 
-    .hero h2 { color: var(--green); font-size: 32px; }
-    .hero p { line-height: 1.6; color: #555; }
-
-    .search-row {
-      display: flex;
-      gap: 8px;
-    }
-
-    .search-row input {
-      flex: 1;
-      min-width: 0;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 7px;
-    }
-
-    .btn {
-      border: 0;
-      border-radius: 7px;
-      background: var(--gold);
-      color: #222;
-      padding: 12px 16px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .hero-art {
-      min-height: 160px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #dcebdc, #f8e5ad);
-      display: grid;
-      place-items: center;
-      font-size: 65px;
-    }
-
-    /* WELCOME BACKGROUND IMAGE */
     .welcome {
       position: relative;
       isolation: isolate;
       width: 92%;
       max-width: 1300px;
-      min-height: 300px;
+      min-height: 350px;
       margin: 22px auto;
       padding: 35px;
       border-radius: 14px;
       overflow: hidden;
       display: flex;
       align-items: center;
+      background: var(--green);
       color: white;
-      background: #315b39;
     }
 
     .welcome-bg {
       position: absolute;
       inset: 0;
-      display: block;
+      z-index: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      z-index: -2;
     }
 
     .welcome::after {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: 0;
       background: linear-gradient(
         90deg,
-        rgba(0,0,0,.78),
-        rgba(0,0,0,.28)
+        rgba(10, 35, 19, 0.88),
+        rgba(10, 35, 19, 0.35)
       );
-      z-index: -1;
       pointer-events: none;
     }
 
     .welcome-content {
       position: relative;
       z-index: 1;
-      max-width: 700px;
+      max-width: 650px;
     }
 
-    .welcome h2 { font-size: 36px; margin-top: 0; }
-    .welcome p { line-height: 1.7; }
-
-    .section {
-      width: 94%;
-      max-width: 1200px;
-      margin: 30px auto;
+    .welcome h2 {
+      margin: 0 0 15px;
+      font-size: clamp(30px, 5vw, 48px);
     }
 
-    .section h2 { color: var(--green); }
+    .welcome p {
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 550px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 22px;
+      border-radius: 7px;
+      background: var(--gold);
+      color: #222;
+      text-decoration: none;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      filter: brightness(0.95);
+    }
+
+    .shop-info {
+      width: 92%;
+      max-width: 1300px;
+      margin: 24px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .info-card {
+      background: white;
+      padding: 18px;
+      border-radius: 10px;
+      text-align: center;
+      border: 1px solid #e4e8e1;
+    }
+
+    .info-card h3 {
+      margin: 0 0 8px;
+      color: var(--green);
+    }
+
+    .info-card p {
+      margin: 0;
+      line-height: 1.5;
+      color: #555;
+    }
+
+    main {
+      width: 92%;
+      max-width: 1300px;
+      margin: 35px auto;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: var(--dark-green);
+    }
+
+    .search-box {
+      width: 100%;
+      max-width: 330px;
+      padding: 12px;
+      border: 1px solid #cbd3c8;
+      border-radius: 7px;
+      font-size: 15px;
+    }
 
     .categories {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-      margin: 18px 0;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
     }
 
-    .category {
-      padding: 15px 8px;
-      border: 1px solid #ddd;
-      border-radius: 9px;
+    .category-btn {
+      padding: 9px 15px;
+      border: 1px solid var(--green);
+      border-radius: 20px;
       background: white;
       color: var(--green);
-      font-weight: bold;
+      cursor: pointer;
     }
 
-    .category span {
-      display: block;
-      font-size: 26px;
-      margin-bottom: 7px;
-    }
-
-    .category.active,
-    .category:hover {
+    .category-btn.active,
+    .category-btn:hover {
       background: var(--green);
       color: white;
     }
 
-    .product-grid {
+    .products {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 15px;
+      gap: 16px;
     }
 
     .product {
       background: white;
-      border: 1px solid #ddd;
-      border-radius: 12px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .product-visual {
-      min-height: 120px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #edf5ec, #fff2cf);
-      font-size: 55px;
-    }
-
-    .product-info {
-      padding: 14px;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-
-    .product-info h3 { margin: 0 0 8px; }
-    .product-info p { color: #666; font-size: 13px; }
-    .price { color: var(--green); font-size: 19px; font-weight: bold; margin: auto 0 12px; }
-    .product-info .btn { width: 100%; }
-
-    .cart-layout {
-      display: grid;
-      grid-template-columns: 1.4fr .8fr;
-      gap: 18px;
-      align-items: start;
-    }
-
-    .panel {
-      background: white;
-      border: 1px solid #ddd;
-      border-radius: 12px;
+      border: 1px solid #e1e7de;
+      border-radius: 10px;
       padding: 18px;
-    }
-
-    .cart-line {
-      display: grid;
-      grid-template-columns: 1fr auto auto;
-      gap: 12px;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .quantity {
       display: flex;
-      gap: 8px;
-      align-items: center;
+      flex-direction: column;
+      min-height: 190px;
+      box-shadow: 0 2px 7px rgba(0, 0, 0, 0.04);
     }
 
-    .quantity button {
-      width: 30px;
-      height: 30px;
+    .product h3 {
+      color: var(--dark-green);
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .product .category {
+      color: #666;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .product .price {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--green);
+      margin-top: auto;
+      padding-top: 10px;
+    }
+
+    .product button {
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .empty-message {
+      display: none;
+      padding: 25px;
       background: white;
-      border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
+      text-align: center;
     }
 
-    .total-row {
+    .cart-section,
+    .contact-section {
+      margin-top: 35px;
+      padding: 24px;
+      background: white;
+      border-radius: 10px;
+      border: 1px solid #e1e7de;
+    }
+
+    .cart-section h2,
+    .contact-section h2 {
+      color: var(--dark-green);
+      margin-top: 0;
+    }
+
+    .cart-row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      margin: 14px 0;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #eee;
     }
 
-    .empty { color: #666; }
-    .small-note { color: #666; font-size: 12px; }
+    .cart-row button {
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      background: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .cart-total {
+      font-size: 21px;
+      font-weight: bold;
+      margin-top: 18px;
+      color: var(--green);
+    }
+
+    .checkout-form {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      max-width: 600px;
+    }
+
+    .checkout-form input,
+    .checkout-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd3c8;
+      border-radius: 7px;
+      font: inherit;
+    }
+
+    .checkout-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
 
     footer {
-      background: #0c3024;
-      color: white;
-      text-align: center;
-      padding: 25px;
-      line-height: 1.8;
       margin-top: 40px;
+      padding: 25px 5%;
+      text-align: center;
+      color: white;
+      background: var(--dark-green);
+      line-height: 1.8;
     }
 
-    @media (max-width: 850px) {
-      .product-grid { grid-template-columns: repeat(3, 1fr); }
-      .categories { grid-template-columns: repeat(3, 1fr); }
+    footer a {
+      color: var(--gold);
     }
 
-    @media (max-width: 600px) {
-      .hero, .cart-layout { grid-template-columns: 1fr; }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .categories { grid-template-columns: repeat(2, 1fr); }
-      .welcome { width: 94%; padding: 24px; min-height: 280px; }
-      .welcome h2 { font-size: 29px; }
-      .search-row { flex-direction: column; }
-      .cart-line { grid-template-columns: 1fr auto; }
-      .cart-line .quantity { grid-column: 2; }
+    @media (max-width: 900px) {
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .shop-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      header {
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+      }
+
+      .welcome {
+        padding: 24px;
+        min-height: 330px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: stretch;
+      }
+
+      .search-box {
+        max-width: none;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div class="topbar">
-    Quality Products • Great Value • Everyday Essentials
-  </div>
-
   <header>
-    <img
-      class="header-bg"
-      src="/Alnoor-Mart/alnoor-mart.jpg"
-      alt=""
-      onerror="this.style.display='none'"
-    >
-    <div>
-      <h1>🛒 Alnoor Mart</h1>
-      <p>Your Trusted Grocery &amp; General Store</p>
-      <p>Quality Products • Great Value • Everyday Essentials</p>
+    <div class="brand">
+      <img src="/Alnoor-Mart/alnoor-mart.jpg" alt="Alnoor Mart logo">
+      <div>
+        <h1>Alnoor Mart</h1>
+        <p>Your everyday shopping store</p>
+      </div>
     </div>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#cart">Cart</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#products">Products</a>
-    <a href="#cart">My Cart (<span id="cart-count">0</span>)</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  <section class="welcome" id="home">
+    <img
+      class="welcome-bg"
+      src="/Alnoor-Mart/alnoor-mart.jpg"
+      alt="Alnoor Mart shop background"
+    >
 
-  <main id="home">
-    <section class="hero">
-      <div>
-        <h2>Everything for Your Home</h2>
-        <p>
-          Shop your daily groceries, personal care products,
-          household essentials and more from Alnoor Mart.
-        </p>
-
-        <form class="search-row" id="search-form">
-          <input
-            id="search-input"
-            type="search"
-            placeholder="Search rice, flour, oil, soap..."
-            aria-label="Search products"
-          >
-          <button class="btn" type="submit">Search</button>
-        </form>
-      </div>
-
-      <div class="hero-art">🥦 🛒 🍎</div>
-    </section>
-
-    <!-- Upload grocery-background.jpg to the main repository folder -->
-    <section class="welcome">
-      <img
-        class="welcome-bg"
-        src="/Alnoor-Mart/grocery-background.jpg"
-        alt=""
-        onerror="this.style.display='none'"
-      >
-
-      <div class="welcome-content">
-        <h2>Welcome to Alnoor Mart!</h2>
-        <p>
-          Shop your everyday groceries and household essentials
-          in one place. Find rice, flour, cooking oil, pulses, tea,
-          soap, detergent and more.
-        </p>
-        <a class="btn" href="#products">Shop Now</a>
-      </div>
-    </section>
-
-    <section class="section" id="products">
-      <h2>Our Products</h2>
-      <p class="small-note">
-        Sample prices in Pakistani Rupees (PKR). Update prices to match your shop.
+    <div class="welcome-content">
+      <h2>Welcome to Alnoor Mart!</h2>
+      <p>
+        Shop your everyday groceries and household essentials
+        in one place. Find useful products at great prices for
+        your family.
       </p>
+      <a class="btn" href="#products">Shop Now</a>
+    </div>
+  </section>
+
+  <section class="shop-info">
+    <div class="info-card">
+      <h3>Great Value</h3>
+      <p>Everyday essentials at clear prices.</p>
+    </div>
+
+    <div class="info-card">
+      <h3>Easy Shopping</h3>
+      <p>Browse products and add them to your cart.</p>
+    </div>
+
+    <div class="info-card">
+      <h3>Simple Ordering</h3>
+      <p>Send your order through WhatsApp.</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="products">
+      <div class="section-heading">
+        <h2>Our Products</h2>
+        <input
+          class="search-box"
+          id="search"
+          type="search"
+          placeholder="Search products..."
+          aria-label="Search products"
+        >
+      </div>
 
       <div class="categories" id="categories">
-        <button class="category active" data-category="All">
-          <span>🛍️</span>All Products
-        </button>
-        <button class="category" data-category="Grocery">
-          <span>🥫</span>Grocery
-        </button>
-        <button class="category" data-category="Personal Care">
-          <span>🧴</span>Shampoo &amp; Soap
-        </button>
-        <button class="category" data-category="Household">
-          <span>🧹</span>Household
-        </button>
-        <button class="category" data-category="Cycles">
-          <span>🚲</span>Cycles
-        </button>
+        <button class="category-btn active" data-category="All">All</button>
+        <button class="category-btn" data-category="Groceries">Groceries</button>
+        <button class="category-btn" data-category="Drinks">Drinks</button>
+        <button class="category-btn" data-category="Household">Household</button>
+        <button class="category-btn" data-category="Personal Care">Personal Care</button>
       </div>
 
-      <div class="product-grid" id="product-grid"></div>
-      <p id="no-results" class="empty" hidden>
-        No products found. Try another search.
-      </p>
+      <div class="products" id="product-list"></div>
+      <p class="empty-message" id="empty-message">No products found.</p>
     </section>
 
-    <section class="section" id="cart">
+    <section class="cart-section" id="cart">
       <h2>Your Shopping Cart</h2>
-
-      <div class="cart-layout">
-        <div class="panel">
-          <div id="cart-items">
-            <p class="empty">Your cart is empty. Add products to get started.</p>
-          </div>
-        </div>
-
-        <aside class="panel">
-          <h3>Order Summary</h3>
-          <div class="total-row">
-            <span>Items</span><strong id="summary-count">0</strong>
-          </div>
-          <div class="total-row">
-            <span>Total</span><strong id="cart-total">Rs. 0</strong>
-          </div>
-          <p class="small-note">
-            Delivery charges, if any, can be confirmed by the shop.
-          </p>
-          <button class="btn" id="whatsapp-order" type="button" style="width:100%">
-            Order on WhatsApp
-          </button>
-        </aside>
-      </div>
+      <div id="cart-items">Your cart is empty.</div>
+      <div class="cart-total" id="cart-total">Total: Rs. 0</div>
+      <button class="btn" id="clear-cart" type="button">Clear Cart</button>
     </section>
 
-    <section class="section" id="contact">
-      <div class="panel">
-        <h2>Contact Alnoor Mart</h2>
-        <p>
-          For product availability and delivery details, contact our shop on WhatsApp.
-        </p>
-      </div>
+    <section class="contact-section" id="contact">
+      <h2>Place Your Order</h2>
+      <p>Enter your details and send your order through WhatsApp.</p>
+
+      <form class="checkout-form" id="checkout-form">
+        <input id="customer-name" type="text" placeholder="Your name" required>
+        <input id="customer-phone" type="tel" placeholder="Your phone number" required>
+        <textarea id="customer-address" placeholder="Delivery address" required></textarea>
+        <textarea id="customer-notes" placeholder="Additional notes (optional)"></textarea>
+        <button class="btn" type="submit">Order on WhatsApp</button>
+      </form>
     </section>
   </main>
 
   <footer>
     <strong>Alnoor Mart</strong><br>
-    Your Trusted Grocery &amp; General Store<br>
-    &copy; <span id="year"></span> Alnoor Mart. All rights reserved.
+    Thank you for shopping with us!<br>
+    <span>Prices are shown in Pakistani rupees (Rs.).</span>
   </footer>
 
   <script>
-    // IMPORTANT: Replace this sample number with your own WhatsApp number.
-    // Pakistan example format: 923001234567 (no plus sign or spaces).
-    const WHATSAPP_NUMBER = "923001234567";
-
-    // These are sample products and prices. Edit them for your shop.
+    // Change the prices and product names below to match your shop.
     const products = [
-      {id:1, name:"Basmati Rice (1 kg)", category:"Grocery", price:320, emoji:"🍚", detail:"Everyday staple"},
-      {id:2, name:"Wheat Flour (1 kg)", category:"Grocery", price:160, emoji:"🌾", detail:"Fresh flour"},
-      {id:3, name:"Cooking Oil (1 litre)", category:"Grocery", price:560, emoji:"🫗", detail:"Kitchen essential"},
-      {id:4, name:"Sugar (1 kg)", category:"Grocery", price:175, emoji:"🧂", detail:"Daily pantry item"},
-      {id:5, name:"Red Lentils (1 kg)", category:"Grocery", price:290, emoji:"🥣", detail:"Pulses and grains"},
-      {id:6, name:"Tea (250 g)", category:"Grocery", price:450, emoji:"🍵", detail:"For tea time"},
-      {id:7, name:"Milk (1 litre)", category:"Grocery", price:230, emoji:"🥛", detail:"Availability may vary"},
-      {id:8, name:"Eggs (dozen)", category:"Grocery", price:360, emoji:"🥚", detail:"Fresh eggs"},
-      {id:9, name:"Shampoo", category:"Personal Care", price:280, emoji:"🧴", detail:"Personal care"},
-      {id:10, name:"Bath Soap", category:"Personal Care", price:110, emoji:"🧼", detail:"Daily hygiene"},
-      {id:11, name:"Toothpaste", category:"Personal Care", price:190, emoji:"🪥", detail:"Oral care"},
-      {id:12, name:"Laundry Detergent", category:"Household", price:420, emoji:"🫧", detail:"Laundry essential"},
-      {id:13, name:"Dishwashing Liquid", category:"Household", price:220, emoji:"🧽", detail:"Kitchen cleaning"},
-      {id:14, name:"Floor Cleaner", category:"Household", price:310, emoji:"🧹", detail:"Home cleaning"},
-      {id:15, name:"Bicycle", category:"Cycles", price:18500, emoji:"🚲", detail:"Ask about available models"},
-      {id:16, name:"Kids' Bicycle", category:"Cycles", price:12500, emoji:"🚴", detail:"Ask about sizes and colours"}
+      { id: 1, name: "Rice (1 kg)", category: "Groceries", price: 300 },
+      { id: 2, name: "Sugar (1 kg)", category: "Groceries", price: 180 },
+      { id: 3, name: "Wheat Flour (1 kg)", category: "Groceries", price: 150 },
+      { id: 4, name: "Cooking Oil (1 litre)", category: "Groceries", price: 550 },
+      { id: 5, name: "Tea (250 g)", category: "Groceries", price: 450 },
+      { id: 6, name: "Salt (800 g)", category: "Groceries", price: 80 },
+      { id: 7, name: "Milk (1 litre)", category: "Drinks", price: 280 },
+      { id: 8, name: "Juice (1 litre)", category: "Drinks", price: 250 },
+      { id: 9, name: "Bottled Water (1.5 litre)", category: "Drinks", price: 100 },
+      { id: 10, name: "Soft Drink (1.5 litre)", category: "Drinks", price: 180 },
+      { id: 11, name: "Dishwashing Liquid", category: "Household", price: 220 },
+      { id: 12, name: "Laundry Detergent", category: "Household", price: 350 },
+      { id: 13, name: "Tissue Box", category: "Household", price: 150 },
+      { id: 14, name: "Toilet Cleaner", category: "Household", price: 250 },
+      { id: 15, name: "Bath Soap", category: "Personal Care", price: 120 },
+      { id: 16, name: "Shampoo", category: "Personal Care", price: 300 },
+      { id: 17, name: "Toothpaste", category: "Personal Care", price: 200 },
+      { id: 18, name: "Toothbrush", category: "Personal Care", price: 100 }
     ];
 
-    const cart = {};
-    let activeCategory = "All";
-    let searchTerm = "";
+    // Replace this example number with your WhatsApp number.
+    // Use country code and digits only, without + or spaces.
+    const WHATSAPP_NUMBER = "923001234567";
 
-    function money(amount) {
+    let cart = [];
+    let selectedCategory = "All";
+
+    const productList = document.getElementById("product-list");
+    const searchInput = document.getElementById("search");
+    const emptyMessage = document.getElementById("empty-message");
+
+    function formatPrice(amount) {
       return "Rs. " + amount.toLocaleString("en-PK");
     }
 
     function renderProducts() {
-      const visible = products.filter(product => {
-        const categoryMatch =
-          activeCategory === "All" || product.category === activeCategory;
-        const text = (
-          product.name + " " + product.category + " " + product.detail
-        ).toLowerCase();
+      const searchTerm = searchInput.value.trim().toLowerCase();
 
-        return categoryMatch && text.includes(searchTerm);
+      const filtered = products.filter(product => {
+        const matchesSearch =
+          product.name.toLowerCase().includes(searchTerm) ||
+          product.category.toLowerCase().includes(searchTerm);
+
+        const matchesCategory =
+          selectedCategory === "All" ||
+          product.category === selectedCategory;
+
+        return matchesSearch && matchesCategory;
       });
 
-      document.getElementById("product-grid").innerHTML = visible.map(product => `
+      productList.innerHTML = filtered.map(product => `
         <article class="product">
-          <div class="product-visual">${product.emoji}</div>
-          <div class="product-info">
-            <h3>${product.name}</h3>
-            <p>${product.detail}</p>
-            <div class="price">${money(product.price)}</div>
-            <button class="btn" type="button" data-add="${product.id}">
-              Add to Cart
-            </button>
-          </div>
+          <h3>${product.name}</h3>
+          <div class="category">${product.category}</div>
+          <div class="price">${formatPrice(product.price)}</div>
+          <button class="btn" type="button" data-add="${product.id}">
+            Add to Cart
+          </button>
         </article>
       `).join("");
 
-      document.getElementById("no-results").hidden = visible.length > 0;
-    }
-
-    function addToCart(id) {
-      cart[id] = (cart[id] || 0) + 1;
-      renderCart();
-    }
-
-    function changeQuantity(id, delta) {
-      cart[id] = (cart[id] || 0) + delta;
-      if (cart[id] <= 0) delete cart[id];
-      renderCart();
+      emptyMessage.style.display = filtered.length ? "none" : "block";
     }
 
     function renderCart() {
-      const entries = Object.entries(cart).map(([id, qty]) => ({
-        product: products.find(product => product.id === Number(id)),
-        qty
-      })).filter(item => item.product);
-
-      const count = entries.reduce((sum, item) => sum + item.qty, 0);
-      const total = entries.reduce(
-        (sum, item) => sum + item.product.price * item.qty, 0
-      );
-
-      document.getElementById("cart-count").textContent = count;
-      document.getElementById("summary-count").textContent = count;
-      document.getElementById("cart-total").textContent = money(total);
-
       const cartItems = document.getElementById("cart-items");
+      const cartTotal = document.getElementById("cart-total");
 
-      if (!entries.length) {
-        cartItems.innerHTML =
-          '<p class="empty">Your cart is empty. Add products to get started.</p>';
+      if (cart.length === 0) {
+        cartItems.textContent = "Your cart is empty.";
+        cartTotal.textContent = "Total: Rs. 0";
         return;
       }
 
-      cartItems.innerHTML = entries.map(({product, qty}) => `
-        <div class="cart-line">
+      cartItems.innerHTML = cart.map(item => `
+        <div class="cart-row">
           <div>
-            <strong>${product.name}</strong><br>
-            <span class="small-note">${money(product.price)} each</span>
+            <strong>${item.name}</strong><br>
+            ${formatPrice(item.price)} × ${item.quantity}
           </div>
-          <div class="quantity">
-            <button type="button" data-change="${product.id}" data-delta="-1">−</button>
-            <strong>${qty}</strong>
-            <button type="button" data-change="${product.id}" data-delta="1">+</button>
+          <div>
+            <button type="button" data-minus="${item.id}" aria-label="Remove one">−</button>
+            <button type="button" data-plus="${item.id}" aria-label="Add one">+</button>
           </div>
-          <strong>${money(product.price * qty)}</strong>
         </div>
       `).join("");
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
+      );
+
+      cartTotal.textContent = "Total: " + formatPrice(total);
     }
+
+    function addToCart(id) {
+      const product = products.find(item => item.id === id);
+      const existing = cart.find(item => item.id === id);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push({ ...product, quantity: 1 });
+      }
+
+      renderCart();
+    }
+
+    productList.addEventListener("click", event => {
+      const button = event.target.closest("[data-add]");
+      if (button) addToCart(Number(button.dataset.add));
+    });
+
+    document.getElementById("cart-items").addEventListener("click", event => {
+      const plusButton = event.target.closest("[data-plus]");
+      const minusButton = event.target.closest("[data-minus]");
+
+      if (plusButton) {
+        const item = cart.find(
+          product => product.id === Number(plusButton.dataset.plus)
+        );
+        if (item) item.quantity += 1;
+      }
+
+      if (minusButton) {
+        const id = Number(minusButton.dataset.minus);
+        const item = cart.find(product => product.id === id);
+
+        if (item) {
+          item.quantity -= 1;
+          if (item.quantity <= 0) {
+            cart = cart.filter(product => product.id !== id);
+          }
+        }
+      }
+
+      renderCart();
+    });
+
+    document.getElementById("clear-cart").addEventListener("click", () => {
+      cart = [];
+      renderCart();
+    });
+
+    searchInput.addEventListener("input", renderProducts);
 
     document.getElementById("categories").addEventListener("click", event => {
       const button = event.target.closest("[data-category]");
       if (!button) return;
 
-      activeCategory = button.dataset.category;
+      selectedCategory = button.dataset.category;
 
-      document.querySelectorAll(".category").forEach(item => {
+      document.querySelectorAll(".category-btn").forEach(item => {
         item.classList.toggle("active", item === button);
       });
 
       renderProducts();
     });
 
-    document.getElementById("product-grid").addEventListener("click", event => {
-      const button = event.target.closest("[data-add]");
-      if (button) addToCart(Number(button.dataset.add));
-    });
-
-    document.getElementById("cart-items").addEventListener("click", event => {
-      const button = event.target.closest("[data-change]");
-      if (button) {
-        changeQuantity(
-          Number(button.dataset.change),
-          Number(button.dataset.delta)
-        );
-      }
-    });
-
-    document.getElementById("search-form").addEventListener("submit", event => {
+    document.getElementById("checkout-form").addEventListener("submit", event => {
       event.preventDefault();
-      searchTerm = document.getElementById("search-input").value.trim().toLowerCase();
-      activeCategory = "All";
 
-      document.querySelectorAll(".category").forEach(item => {
-        item.classList.toggle("active", item.dataset.category === "All");
-      });
-
-      renderProducts();
-      document.getElementById("products").scrollIntoView({behavior:"smooth"});
-    });
-
-    document.getElementById("whatsapp-order").addEventListener("click", () => {
-      const entries = Object.entries(cart).map(([id, qty]) => ({
-        product: products.find(product => product.id === Number(id)),
-        qty
-      })).filter(item => item.product);
-
-      if (!entries.length) {
-        alert("Your cart is empty. Please add some products first.");
+      if (cart.length === 0) {
+        alert("Please add at least one product to your cart.");
         return;
       }
 
-      if (!/^\d{10,15}$/.test(WHATSAPP_NUMBER) ||
-          WHATSAPP_NUMBER === "923001234567") {
-        alert("Please replace the sample WhatsApp number in index.html with your own number, including country code.");
+      if (WHATSAPP_NUMBER === "923001234567") {
+        alert("Please replace the example WhatsApp number in the code with your own number first.");
         return;
       }
 
-      const total = entries.reduce(
-        (sum, item) => sum + item.product.price * item.qty, 0
+      const name = document.getElementById("customer-name").value.trim();
+      const phone = document.getElementById("customer-phone").value.trim();
+      const address = document.getElementById("customer-address").value.trim();
+      const notes = document.getElementById("customer-notes").value.trim();
+
+      const total = cart.reduce(
+        (sum, item) => sum + item.price * item.quantity, 0
       );
 
-      const lines = entries.map(({product, qty}) =>
-        `• ${product.name} x ${qty} = ${money(product.price * qty)}`
+      const orderLines = cart.map(item =>
+        `${item.name} x ${item.quantity} = ${formatPrice(item.price * item.quantity)}`
       );
 
-      const message =
-        `Assalam-o-Alaikum Alnoor Mart! I would like to place this order:\n\n` +
-        `${lines.join("\n")}\n\nTotal: ${money(total)}` +
-        `\n\nPlease confirm availability and delivery details.`;
+      const message = [
+        "New order for Alnoor Mart",
+        "",
+        "Customer: " + name,
+        "Phone: " + phone,
+        "Address: " + address,
+        "",
+        "Order:",
+        ...orderLines,
+        "",
+        "Total: " + formatPrice(total),
+        notes ? "Notes: " + notes : ""
+      ].filter(Boolean).join("\n");
 
-      window.open(
-        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
-        "_blank"
-      );
+      const url =
+        "https://wa.me/" + WHATSAPP_NUMBER +
+        "?text=" + encodeURIComponent(message);
+
+      window.open(url, "_blank");
     });
 
-    document.getElementById("year").textContent = new Date().getFullYear();
     renderProducts();
     renderCart();
   </script>
